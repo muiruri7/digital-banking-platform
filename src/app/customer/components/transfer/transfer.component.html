@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h2>Transfer Funds</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <form (ngSubmit)="transferFunds()">
+    <div class="mb-3">
+      <label for="fromAccountNumber" class="form-label">From Account Number</label>
+      <input type="text" class="form-control" id="fromAccountNumber" name="fromAccountNumber" [(ngModel)]="fromAccountNumber" required>
+    </div>
+    <div class="mb-3">
+      <label for="toAccountNumber" class="form-label">To Account Number</label>
+      <input type="text" class="form-control" id="toAccountNumber" name="toAccountNumber" [(ngModel)]="toAccountNumber" required>
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount</label>
+      <input type="number" class="form-control" id="amount" name="amount" [(ngModel)]="amount" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Transfer</button>
+  </form>
+</div>

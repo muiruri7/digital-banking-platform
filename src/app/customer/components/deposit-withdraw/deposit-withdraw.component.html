@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h2>Deposit / Withdraw</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <form (ngSubmit)="depositWithdraw()">
+    <div class="mb-3">
+      <label for="accountNumber" class="form-label">Account Number</label>
+      <input type="text" class="form-control" id="accountNumber" name="accountNumber" [(ngModel)]="accountNumber" required>
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount</label>
+      <input type="number" class="form-control" id="amount" name="amount" [(ngModel)]="amount" required>
+    </div>
+    <div class="mb-3">
+      <label for="transactionType" class="form-label">Transaction Type</label>
+      <select class="form-select" id="transactionType" name="transactionType" [(ngModel)]="transactionType">
+        <option value="DEPOSIT">Deposit</option>
+        <option value="WITHDRAW">Withdraw</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

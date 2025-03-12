@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h2>Manage Customers</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="customers && customers.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Customer ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.id }}</td>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.status }}</td>
+          <td>
+            <button class="btn btn-sm btn-info">View</button>
+            <button class="btn btn-sm btn-warning">Deactivate</button>
+            <button class="btn btn-sm btn-primary">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!customers || customers.length === 0 && !errorMessage">
+    <p>No customers found.</p>
+  </div>
+</div>

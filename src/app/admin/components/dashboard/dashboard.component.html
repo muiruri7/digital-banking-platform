@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <h2>Admin Dashboard</h2>
+  <div *ngIf="username">
+    <p>Welcome, {{ username }}!</p>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Manage Customers</h5>
+          <p class="card-text">View, deactivate, and update customer accounts.</p>
+          <a routerLink="/admin/manage-customers" class="btn btn-primary">Manage Customers</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Manage Accounts</h5>
+          <p class="card-text">List, create, update, and freeze bank accounts.</p>
+          <a routerLink="/admin/manage-accounts" class="btn btn-primary">Manage Accounts</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">View Audit Logs</h5>
+          <p class="card-text">Searchable logs of critical actions.</p>
+          <a routerLink="/admin/view-audit-logs" class="btn btn-primary">View Audit Logs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Search Transactions</h5>
+          <p class="card-text">Filter transactions by various criteria.</p>
+          <a routerLink="/admin/search-transactions" class="btn btn-primary">Search Transactions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h2>Notifications</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="notifications && notifications.length > 0">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let notification of notifications">
+        {{ notification.message }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!notifications || notifications.length === 0 && !errorMessage">
+    <p>No notifications found.</p>
+  </div>
+</div>

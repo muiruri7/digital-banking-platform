@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <h2>Customer Dashboard</h2>
+  <div *ngIf="username">
+    <p>Welcome, {{ username }}!</p>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">View Profile</h5>
+          <p class="card-text">Manage your personal information.</p>
+          <a routerLink="/customer/profile" class="btn btn-primary">View Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">View Accounts</h5>
+          <p class="card-text">See your linked bank accounts.</p>
+          <a routerLink="/customer/accounts" class="btn btn-primary">View Accounts</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Mini Statement</h5>
+          <p class="card-text">Check your account transactions.</p>
+          <a routerLink="/customer/mini-statement" class="btn btn-primary">View Statement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Deposit / Withdraw</h5>
+          <p class="card-text">Manage your account balance.</p>
+          <a routerLink="/customer/deposit-withdraw" class="btn btn-primary">Deposit / Withdraw</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Transfer Funds</h5>
+          <p class="card-text">Send money to other accounts.</p>
+          <a routerLink="/customer/transfer" class="btn btn-primary">Transfer Funds</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Notifications</h5>
+          <p class="card-text">View transaction alerts.</p>
+          <a routerLink="/customer/notifications" class="btn btn-primary">View Notifications</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
