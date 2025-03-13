@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ManageCustomersComponent } from './components/manage-customers/manage-customers.component';
 import { ManageAccountsComponent } from './components/manage-accounts/manage-accounts.component';
 import { ViewAuditLogsComponent } from './components/view-audit-logs/view-audit-logs.component';
@@ -12,7 +12,7 @@ import { AccountDetailsComponent } from './components/account-details/account-de
 import { AccountUpdateComponent } from './components/account-update/account-update.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'manage-customers', component: ManageCustomersComponent },
   { path: 'manage-accounts', component: ManageAccountsComponent },
   { path: 'view-audit-logs', component: ViewAuditLogsComponent },

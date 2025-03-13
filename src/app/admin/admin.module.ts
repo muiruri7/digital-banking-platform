@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ManageCustomersComponent } from './components/manage-customers/manage-customers.component';
 import { ManageAccountsComponent } from './components/manage-accounts/manage-accounts.component';
 import { ViewAuditLogsComponent } from './components/view-audit-logs/view-audit-logs.component';
@@ -20,7 +20,7 @@ import { AccountUpdateComponent } from './components/account-update/account-upda
 @NgModule({
   declarations: [
     AdminComponent,
-    DashboardComponent,
+    AdminDashboardComponent,
     ManageCustomersComponent,
     ManageAccountsComponent,
     ViewAuditLogsComponent,

@@ -15,14 +15,12 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    this.authService.login(this.username, this.password).subscribe({
-      next: (response: any) => { // Replace 'any' with a specific interface later
+    this.authService.login({ username: this.username, password: this.password }).subscribe({      next: (response: any) => { // Replace 'any' with a specific interface later
         // Assuming the response contains a JWT token
         const token = response.token;
         const role = response.role; // Assuming the role is also in the response
-        this.authService.saveToken(token);
-        this.authService.setLoggedInRole(role);
-
+        this.authService.storeToken(token);
+        this.authService. storeLoggedInRole(role);
         if (role === 'ADMIN') {
           this.router.navigate(['/admin']);
         } else if (role === 'CUSTOMER') {

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { MiniStatementComponent } from './components/mini-statement/mini-statement.component';
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     CustomerComponent,
-    DashboardComponent,
+    CustomerDashboardComponent,
     ProfileComponent,
     AccountsComponent,
     MiniStatementComponent,
