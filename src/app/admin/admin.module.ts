@@ -10,6 +10,11 @@ import { ViewAuditLogsComponent } from './components/view-audit-logs/view-audit-
 import { SearchTransactionsComponent } from './components/search-transactions/search-transactions.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { CustomerUpdateComponent } from './components/customer-update/customer-update.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { AccountDetailsComponent } from './components/account-details/account-details.component';
+import { AccountUpdateComponent } from './components/account-update/account-update.component';
 
 
 @NgModule({
@@ -19,7 +24,12 @@ import { HttpClientModule } from '@angular/common/http';
     ManageCustomersComponent,
     ManageAccountsComponent,
     ViewAuditLogsComponent,
-    SearchTransactionsComponent
+    SearchTransactionsComponent,
+    CustomerDetailsComponent,
+    CustomerUpdateComponent,
+    CreateAccountComponent,
+    AccountDetailsComponent,
+    AccountUpdateComponent
   ],
   imports: [
     CommonModule,

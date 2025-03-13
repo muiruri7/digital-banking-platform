@@ -1,49 +1,101 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, tap } from 'rxjs/operators';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'YOUR_BACKEND_API_URL'; // Replace with your backend API URL
-  private readonly TOKEN_KEY = 'auth_token';
-  private readonly ROLE_KEY = 'auth_role';
+  private apiUrl = 'YOUR_BACKEND_API_URL/auth';
+  private tokenRefreshedSource = new BehaviorSubject<void>(undefined);
+  tokenRefreshed$ = this.tokenRefreshedSource.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/login`, { username, password });
+  login(credentials: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  register(username: string, password: string, role: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/register`, { username, password, role });
+  register(userData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, userData).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  saveToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
+  storeToken(token: string): void {
+    localStorage.setItem('token', token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+    return localStorage.getItem('token');
   }
 
   removeToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem('token');
   }
 
-  setLoggedInRole(role: string): void {
-    localStorage.setItem(this.ROLE_KEY, role);
+  storeLoggedInRole(role: string): void {
+    localStorage.setItem('role', role);
   }
 
   getLoggedInRole(): string | null {
-    return localStorage.getItem(this.ROLE_KEY);
+    return localStorage.getItem('role');
   }
 
   removeLoggedInRole(): void {
-    localStorage.removeItem(this.ROLE_KEY);
+    localStorage.removeItem('role');
   }
 
-  // You might need a method to handle JWT expiration and refresh tokens
-  // This is a more advanced topic and depends on your backend implementation
+  isLoggedIn(): boolean {
+    return this.getToken() !== null;
+  }
+
+  getDecodedToken(): any | null {
+    const token = this.getToken();
+    if (token) {
+      try {
+        return jwt_decode.jwtDecode(token);
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        return null;
+      }
+    }
+    return null;
+  }
+
+  isTokenExpired(): boolean {
+    const decodedToken = this.getDecodedToken();
+    if (decodedToken && decodedToken.exp) {
+      return Date.now() >= decodedToken.exp * 1000;
+    }
+    return true;
+  }
+
+  refreshToken(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/refresh`, {}).pipe(
+      catchError(this.handleError),
+      tap((response: any) => {
+        const newToken = response.token;
+        this.storeToken(newToken);
+        this.tokenRefreshedSource.next(undefined);
+      })
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
 }

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'accounts', component: AccountsComponent },
-  { path: 'mini-statement/:id', component: MiniStatementComponent }, // Route with parameter
+  { path: 'mini-statement/:id', component: MiniStatementComponent },
   { path: 'deposit-withdraw', component: DepositWithdrawComponent },
   { path: 'transfer', component: TransferComponent },
   { path: 'notifications', component: NotificationsComponent }

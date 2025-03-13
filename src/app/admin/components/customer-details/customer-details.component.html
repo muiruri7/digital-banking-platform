@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <h2>Customer Details</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="customer">
+    <p><strong>ID:</strong> {{ customer.id }}</p>
+    <p><strong>Name:</strong> {{ customer.name }}</p>
+    <p><strong>Email:</strong> {{ customer.email }}</p>
+    </div>
+  <div *ngIf="!customer && !errorMessage">
+    <p>Loading customer details...</p>
+  </div>
+</div>

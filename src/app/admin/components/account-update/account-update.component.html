@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h2>Update Account</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="account">
+    <form (ngSubmit)="updateAccount()">
+      <div class="mb-3">
+        <label for="customerId" class="form-label">Customer ID</label>
+        <input type="text" class="form-control" id="customerId" name="customerId" [(ngModel)]="account.customerId" required>
+      </div>
+      <div class="mb-3">
+        <label for="accountNumber" class="form-label">Account Number</label>
+        <input type="text" class="form-control" id="accountNumber" name="accountNumber" [(ngModel)]="account.accountNumber" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Account</button>
+    </form>
+  </div>
+  <div *ngIf="!account && !errorMessage">
+    <p>Loading account details...</p>
+  </div>
+</div>

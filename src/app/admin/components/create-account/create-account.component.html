@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <h2>Create Account</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <form (ngSubmit)="createAccount()">
+    <div class="mb-3">
+      <label for="customerId" class="form-label">Customer ID</label>
+      <input type="text" class="form-control" id="customerId" name="customerId" [(ngModel)]="account.customerId" required>
+    </div>
+    <div class="mb-3">
+      <label for="accountNumber" class="form-label">Account Number</label>
+      <input type="text" class="form-control" id="accountNumber" name="accountNumber" [(ngModel)]="account.accountNumber" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Account</button>
+  </form>
+</div>
